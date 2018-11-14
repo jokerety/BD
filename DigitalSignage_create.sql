@@ -9,7 +9,7 @@ drop table `tariffs`;
 
 
 CREATE TABLE tariffs (
-    tariff_id INT NOT NULL ,
+    tariff_id INT NOT NULL AUTO_INCREMENT,
     tariff_name VARCHAR(45) NOT NULL,
     PRIMARY KEY (tariff_id)
 );
@@ -57,6 +57,40 @@ CREATE TABLE orders (
     FOREIGN KEY (tariff_id) REFERENCES tariffs(tariff_id),
     FOREIGN KEY (priority_id) REFERENCES priorities(priority_id)
 ) ;
+
+LOAD DATA INFILE '/var/lib/mysql-files/tariff.csv'
+INTO TABLE tariffs
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/priorities.csv'
+INTO TABLE priorities
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/payments.csv'
+INTO TABLE payments
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/contracts.csv'
+INTO TABLE contracts
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/companies.csv'
+INTO TABLE companies
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/orders.csv'
+INTO TABLE orders
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+
+
+
 
 
 
